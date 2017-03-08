@@ -1,5 +1,5 @@
 require "sinatra"
-require "sinatra/reloader"
+
 
 class Numeric
   Alpha26 = ("a".."z").to_a
@@ -44,7 +44,6 @@ def convert_to_cipher(text, keycode)
     end
 
     ciphered = text.split("").map do |char|
-
       if char =~ /\W/
         char = char
       elsif char === char.upcase then
@@ -53,20 +52,28 @@ def convert_to_cipher(text, keycode)
         char = ((char.to_i26) + key).to_s26
       end
     end
-
     ciphered.join
+end
+
+get '/' do
+  to_cipher = params['to_cipher'].to_s
+  cipher_key = params['cipher_key'].to_i
+  ciphered_result = convert_to_cipher(to_cipher, cipher_key)
+  erb :index, :locals => {:ciphered_result => ciphered_result}
 
 end
 
-puts "Enter a phrase you would like ciphered"
-words_to_convert = gets.to_s.chomp
-puts "and now enter your keycode"
-cipher_key_code = gets.chomp.to_i
-if cipher_key_code < 0
-  puts "enter something greater than zero!"
-  cipher_key_code = gets.chomp.to_i
-end
 
-ciphered_phrase = convert_to_cipher(words_to_convert, cipher_key_code)
 
-puts "Your Caesar's Cipher is: #{ciphered_phrase}"
+#puts "Enter a phrase you would like ciphered"
+#words_to_convert = gets.to_s.chomp
+#puts "and now enter your keycode"
+#cipher_key_code = gets.chomp.to_i
+#if cipher_key_code < 0
+  #puts "enter something greater than zero!"
+  #cipher_key_code = gets.chomp.to_i
+#end
+#
+#ciphered_phrase = convert_to_cipher(words_to_convert, cipher_key_code)
+#
+#puts "Your Caesar's Cipher is: #{ciphered_phrase}"

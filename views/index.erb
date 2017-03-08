@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caesar's Converter</title>
+
+  <style>
+    #centered {
+      text-align: center;
+      margin-top: 10%;
+      width: 300px;
+      margin-right: auto;
+      margin-left: auto;
+     }
+
+     p {
+      font-weight: bold;
+     }
+
+
+     body {
+      background-color: pink;
+      text-align: center;
+      font-family: Palatino;
+     }
+     ::-webkit-input-placeholder {
+         text-align: center;
+      }
+
+      :-moz-placeholder { /* Firefox 18- */
+         text-align: center;
+      }
+
+      ::-moz-placeholder {  /* Firefox 19+ */
+         text-align: center;
+      }
+
+      :-ms-input-placeholder {
+         text-align: center;
+      }
+
+
+
+    </style>
+</head>
+<body>
+  <div id="centered">
+  <h1>Caesar's Cipher</h1>
+    <form>
+      <p>Enter the message you would like ciphered:</p>
+      <input type="text" name="to_cipher"  placeholder="Your text to be ciphered" style="min-height: 100px; width: 80%;"><br>
+      <p>Enter a number (greater than 0):</p>
+      <input type="number" name="cipher_key" value="cipher_key" style="max-width: 40px;" ><br>
+      <input type="submit"  value="Cipher" style="margin-top: 10px; width: 100px; text-align: center;">
+    </form>
+    <p>Your ciphered message is:</p>
+    <h3 id="result"><%= ciphered_result %> </h3>
+  </div>
+</body>
+</html>
